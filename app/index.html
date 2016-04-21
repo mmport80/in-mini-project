@@ -4,32 +4,117 @@
   <meta charset="UTF-8">
   <title>My App</title>
   <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+      .table {
+        display:table;
+        }
+      .header {
+        display:table-header-group;
+        font-weight:bold;
+        }
+      .rowGroup {
+        display:table-row-group;
+        }
+      .row {
+        display:table-row;
+        }
+      .cell {
+        display:table-cell;
+        padding: 1em;
+        }
+
+  </style>
+
 </head>
 <body>
-  <div id="app">
-    <p>xoxo</p>
-    <form>
-      <div>
-        <label for="name">
-          <input type="button" placeholder="Name" />
-        </label>
+
+  <h1>Predict what a user is "seeking"</h1>
+
+  <form>
+
+    <div class="table">
+
+      <div class="header">
+        <div class="cell"></div>
+        <div class="cell"></div>
       </div>
-      <div>
-        <label for="email">
-          <input type="text" placeholder="Email">
-        </label>
+
+      <div class="rowGroup">
+        <div class="cell">
+          Nick
+        </div>
+        <div class="cell">
+          <input type="text" placeholder="Name" />
+        </div>
       </div>
-      <div>
-        <label for="password">
-          <input type="password" placeholder="Password">
-        </label>
+
+      <div class="rowGroup">
+        <div class="cell">
+          Gender
+        </div>
+        <div class="cell">
+          <select>
+            <option value="2">Male</option>
+            <option value="1">Female</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <label for="gender">
-          <input type="checkbox" placeholder="Dude">
-        </label>
+
+      <div class="rowGroup">
+        <div class="cell">
+          Date of Birth
+        </div>
+        <div class="cell">
+          <input type="date" placeholder="Date" />
+        </div>
       </div>
-    </form>
+
+      <div class="rowGroup">
+        <div class="cell">
+          Country
+        </div>
+        <div class="cell">
+          <input type="number" placeholder="1->4" min="1" max="4">
+        </div>
+      </div>
+
+      <div class="rowGroup">
+        <div class="cell">
+          State
+        </div>
+        <div class="cell">
+          <input type="number" placeholder="1->240" min="1" max="240">
+        </div>
+      </div>
+<!--
+      <div class="rowGroup">
+        <div class="cell">
+          Sponsor
+        </div>
+        <div class="cell">
+          <input type="number" placeholder="0->" min="0">
+        </div>
+      </div>
+
+      <div class="rowGroup">
+        <div class="cell">
+          Ad Source
+        </div>
+        <div class="cell">
+          <input type="number" placeholder="0->30" min="0" max="30">
+        </div>
+      </div>
+-->
+    </div>
+
+  </form>
+
+  <div>
+    <h2>Seeking: </h2>
+    <siv id="result"></div>
   </div>
+
 </body>
 </html>

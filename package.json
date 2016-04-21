@@ -26,6 +26,9 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "machine_learning": "0.0.8"
+    "jquery": "^2.2.3",
+    "jsonform": "0.0.1",
+    "machine_learning": "0.0.8",
+    "underscore": "^1.8.3"
   }
 }
