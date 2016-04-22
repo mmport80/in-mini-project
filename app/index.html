@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>My App</title>
-  <link rel="stylesheet" href="styles.css">
-
 
     <style>
       .table {
@@ -30,7 +28,7 @@
 </head>
 <body>
 
-  <h1>Predict what a user is "seeking"</h1>
+  <h1>Predict what an Ashley Madison user is "seeking"</h1>
 
   <form>
 
@@ -46,7 +44,7 @@
           Nick
         </div>
         <div class="cell">
-          <input type="text" placeholder="Name" />
+          <input id="nick" type="text" placeholder="Name" />
         </div>
       </div>
 
@@ -55,9 +53,9 @@
           Gender
         </div>
         <div class="cell">
-          <select>
-            <option value="2">Male</option>
-            <option value="1">Female</option>
+          <select id="gender" >
+            <option value="Male" selected >Male</option>
+            <option value="Female" >Female</option>
           </select>
         </div>
       </div>
@@ -67,7 +65,7 @@
           Date of Birth
         </div>
         <div class="cell">
-          <input type="date" placeholder="Date" />
+          <input id="dob"  type="date" placeholder="Date" value="1973-09-16" />
         </div>
       </div>
 
@@ -76,19 +74,22 @@
           Country
         </div>
         <div class="cell">
-          <input type="number" placeholder="1->4" min="1" max="4">
+          <select id="country" >
+            <option value="USA" selected >USA</option>
+            <option value="Canada" >Canada</option>
+          </select>
         </div>
       </div>
 
+      <!--
       <div class="rowGroup">
         <div class="cell">
           State
         </div>
         <div class="cell">
-          <input type="number" placeholder="1->240" min="1" max="240">
+          <input  id="state" type="number" placeholder="1->240" min="1" max="240">
         </div>
       </div>
-<!--
       <div class="rowGroup">
         <div class="cell">
           Sponsor

@@ -1,39 +1,46 @@
-import "machine_learning";
-import jsonForm from "jsonform";
-import $ from 'jquery';
+//import "machine_learning";
+import "d3";
+import "babel-polyfill";
+import moment from 'moment';
+import * as ml from 'machine_learning';
+import * as fp from 'lodash/fp';
 
-console.log("xoxo");
-const a = x => 1;
 
+const postBox = function*(){
+  const data = yield;
+  //map to array for ml lib input
+  //nick, gender, date of birth, country
+  const d =
+    fp.reduce(
+      (a,u) =>
+          ({  data: a.data.concat( [ [ u.nickname.length, u.gender, +moment(u.dob), u.country ] ] )
+            , result: a.result.concat(u.seeking)
+            })
+        , {data: [], result: []}
+      )
+      (data);
 
-var ml = require('machine_learning');
+  const dt = new ml.DecisionTree( d );
+  dt.build();
+  //avoid overfitting, by trading correctness in this case for robustness and simplicity
+  dt.prune(0.1);
 
-var data =[['slashdot','USA','yes',18],
-           ['google','France','yes',23],
-           ['digg','USA','yes',24],
-           ['kiwitobes','France','yes',23],
-           ['google','UK','no',21],
-           ['(direct)','New Zealand','no',12],
-           ['(direct)','UK','no',21],
-           ['google','USA','no',24],
-           ['slashdot','France','yes',19],
-           ['digg','USA','no',18,],
-           ['google','UK','no',18,],
-           ['kiwitobes','UK','no',19],
-           ['digg','New Zealand','yes',12],
-           ['slashdot','UK','no',21],
-           ['google','UK','yes',18],
-           ['kiwitobes','France','yes',19]];
-var result = ['None','Premium','Basic','Basic','Premium','None','Basic','Premium','None','None','None','None','Basic','None','Basic','Basic'];
+  console.log(d);
 
-var dt = new ml.DecisionTree({
-    data : data,
-    result : result
-});
+  document.querySelector('#nick');
+  document.querySelector('#gender');
+  document.querySelector('#dob');
+  document.querySelector('#country');
 
-dt.build();
+  //send to new postBox
+  //set up listeners
+  //send updates
+  //classify
 
-console.log("Classify : ", dt.classify( ['xo','USA','no',21] ) );
+  console.log("Classify : ", dt.classify( ["xoxo","Female",97542000000,1] ) );
+  }
 
-dt.prune(0.1); // 1.0 : mingain.
-console.log(dt);
+const send2 = postBox();
+send2.next();
+
+d3.csv( "data.csv", data => send2.next(data) );
