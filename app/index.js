@@ -25,7 +25,7 @@ const update = ( m, d, i, tree ) => {
     //IDs of form elements
     (['#nick','#gender','#dob','#country'])
   //make prediction
-  result = tree.classify( m );
+  const result = tree.classify( m );
   //update result on screen
   qs('#result').innerHTML = Object.keys(result)[0];
   }
@@ -45,7 +45,7 @@ const postBox = function*(){
       )
       (data);
 
-  //build
+  //build - would prefer to send this off to a worker, to smoothen things out... no time
   const tree = new ml.DecisionTree( d );
   tree.build();
   //avoid overfitting, by trading correctness in this case for robustness and simplicity
